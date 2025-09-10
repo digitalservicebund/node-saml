@@ -164,17 +164,30 @@ export const SAML_ATTRIBUTE_NAME_FORMATS = {
 /**
  * Common language codes for ServiceName and ServiceDescription
  */
-export type CommonLanguageCode = "en" | "es" | "fr" | "de" | "it" | "pt" | "ja" | "ko" | "zh" | "ar" | "ru";
+export type CommonLanguageCode =
+  | "en"
+  | "es"
+  | "fr"
+  | "de"
+  | "it"
+  | "pt"
+  | "ja"
+  | "ko"
+  | "zh"
+  | "ar"
+  | "ru";
 
 /**
  * Union type for common SAML attribute names
  */
-export type CommonSamlAttributeName = typeof COMMON_SAML_ATTRIBUTES[keyof typeof COMMON_SAML_ATTRIBUTES];
+export type CommonSamlAttributeName =
+  (typeof COMMON_SAML_ATTRIBUTES)[keyof typeof COMMON_SAML_ATTRIBUTES];
 
 /**
  * Union type for SAML attribute name formats
  */
-export type SamlAttributeNameFormat = typeof SAML_ATTRIBUTE_NAME_FORMATS[keyof typeof SAML_ATTRIBUTE_NAME_FORMATS];
+export type SamlAttributeNameFormat =
+  (typeof SAML_ATTRIBUTE_NAME_FORMATS)[keyof typeof SAML_ATTRIBUTE_NAME_FORMATS];
 
 export interface SamlScopingConfig {
   idpList?: SamlIDPListConfig[];
@@ -191,9 +204,9 @@ export enum ValidateInResponseTo {
 /**
  * Describes an AttributeConsumingService element in the SAML metadata.
  * Used by service providers to specify required attributes.
- * 
+ *
  * @see {@link https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf SAML 2.0 Metadata Specification, Section 2.4.4}
- * 
+ *
  * @example
  * ```typescript
  * const attributeConsumingService: AttributeConsumingService = {
@@ -228,7 +241,7 @@ export enum ValidateInResponseTo {
  * ```
  */
 export interface AttributeConsumingService {
-  /** 
+  /**
    * Unique index for the service within the SP metadata.
    * Must be unique across all AttributeConsumingService elements.
    * @example "0", "1", "2"
@@ -246,13 +259,13 @@ export interface AttributeConsumingService {
    * At least one ServiceName is required.
    */
   ServiceName: {
-    /** 
-     * Language code (e.g., "en", "es", "fr") 
+    /**
+     * Language code (e.g., "en", "es", "fr")
      * @example "en", "es", "fr", "de"
      */
     "@xml:lang": string;
-    
-    /** 
+
+    /**
      * The actual service name text
      * @example "My Authentication Service", "Employee Portal"
      */
@@ -264,13 +277,13 @@ export interface AttributeConsumingService {
    * Optional but recommended for better user experience.
    */
   ServiceDescription?: {
-    /** 
-     * Language code (e.g., "en", "es", "fr") 
+    /**
+     * Language code (e.g., "en", "es", "fr")
      * @example "en", "es", "fr", "de"
      */
     "@xml:lang": string;
-    
-    /** 
+
+    /**
      * The actual service description text
      * @example "This service provides authentication for the employee portal"
      */
@@ -281,7 +294,7 @@ export interface AttributeConsumingService {
    * Attributes requested by the service, with specifications
    */
   RequestedAttribute: {
-    /** 
+    /**
      * Name of the requested attribute, typically an OID.
      * Common values:
      * - `urn:oid:2.5.4.42` (givenName)
@@ -298,13 +311,13 @@ export interface AttributeConsumingService {
      */
     "@NameFormat"?: string;
 
-    /** 
+    /**
      * Human-readable name of the attribute
      * @example "givenName", "sn", "emailAddress", "mail"
      */
     "@FriendlyName"?: string;
 
-    /** 
+    /**
      * Indicates if the attribute is required for the service to function
      * @default false
      */
@@ -363,11 +376,11 @@ export interface SamlOptions extends Partial<SamlSigningOptions>, MandatorySamlO
   disableRequestAcsUrl: boolean;
   samlAuthnRequestExtensions?: Record<string, unknown>;
   samlLogoutRequestExtensions?: Record<string, unknown>;
-  
+
   /**
    * Attribute consuming services to include in the metadata.
    * These describe the attributes that the service provider wishes to receive.
-   * 
+   *
    * @example
    * ```typescript
    * metadataAttributeConsumingServices: [{

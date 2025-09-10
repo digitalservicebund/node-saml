@@ -86,7 +86,7 @@ describe("AttributeConsumingService", function () {
         expect(attributeConsumingService.ServiceDescription).to.have.length(1);
         expect(attributeConsumingService.ServiceDescription[0].$["xml:lang"]).to.equal("en");
         expect(attributeConsumingService.ServiceDescription[0]._).to.equal(
-          "My Service Description"
+          "My Service Description",
         );
 
         // Check RequestedAttribute
@@ -96,7 +96,7 @@ describe("AttributeConsumingService", function () {
         const givenNameAttr = attributeConsumingService.RequestedAttribute[0];
         expect(givenNameAttr.$.Name).to.equal("urn:oid:2.5.4.42");
         expect(givenNameAttr.$.NameFormat).to.equal(
-          "urn:oasis:names:tc:SAML:2.0:attrname-format:uri"
+          "urn:oasis:names:tc:SAML:2.0:attrname-format:uri",
         );
         expect(givenNameAttr.$.FriendlyName).to.equal("givenName");
         expect(givenNameAttr.$.isRequired).to.equal("true");
