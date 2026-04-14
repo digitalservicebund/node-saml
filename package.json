@@ -103,6 +103,7 @@
     "access": "public"
   },
   "overrides": {
-    "axios": "^1.14.0"
+    "axios": "^1.14.0",
+    "undici": "^6.24.1"
   }
 }
