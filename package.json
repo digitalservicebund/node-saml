@@ -101,5 +101,8 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "overrides": {
+    "axios": "^1.14.0"
   }
 }
